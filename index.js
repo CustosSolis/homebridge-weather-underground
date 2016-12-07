@@ -17,6 +17,9 @@ function WeatherUndergroundTemperatureHumidity(log, config) {
     this.weather = new weatherUnderground(config['key']);
     this.name = config['name'];
     this.city = config['city'];
+    this.manufacturer = config["manufacturer"] || "wunderground.com";
+    this.model = config["model"] || "API";
+    this.serial = config["key"];
     this.timestampOfLastUpdate = 0;
 }
 
@@ -53,9 +56,9 @@ WeatherUndergroundTemperatureHumidity.prototype = {
         var informationService = new Service.AccessoryInformation();
 
         informationService
-                .setCharacteristic(Characteristic.Manufacturer, "Weather Underground")
-                .setCharacteristic(Characteristic.Model, "API")
-                .setCharacteristic(Characteristic.SerialNumber, this.city);
+                .setCharacteristic(Characteristic.Manufacturer, this.manufacturer)
+                .setCharacteristic(Characteristic.Model, this.model)
+                .setCharacteristic(Characteristic.SerialNumber, this.serial);
 
         temperatureService = new Service.TemperatureSensor(this.name);
         temperatureService
