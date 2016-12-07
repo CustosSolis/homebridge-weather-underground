@@ -55,7 +55,7 @@ WeatherUndergroundTemperatureHumidity.prototype = {
         informationService
                 .setCharacteristic(Characteristic.Manufacturer, "Weather Underground")
                 .setCharacteristic(Characteristic.Model, "API")
-                .setCharacteristic(Characteristic.SerialNumber, this.weather);
+                .setCharacteristic(Characteristic.SerialNumber, this.city);
 
         temperatureService = new Service.TemperatureSensor(this.name);
         temperatureService
